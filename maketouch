@@ -1,0 +1,2 @@
+cd common; ./maketouch;  cd ..;
+cd daemon; ./maketouch;  cd ..;

@@ -1,0 +1,4 @@
+echo base; cd base; make touch; cd ..;
+echo core; cd core; make touch; cd ..;
+echo redis; cd redis; make touch; cd ..;
+

@@ -1,0 +1,2 @@
+cd common; ./makeall;  cd ..;
+cd daemon; ./makeall;  cd ..;

@@ -1,0 +1,14 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=/root/proj/logq/common/lib/cbase
+includedir=/root/proj/logq/common/inc
+
+Name: cbase
+Description: C Foundation Library
+Version: 1.3.4
+URL: http://www.hyperrealm.com/main.php?s=cbase
+Requires:
+Conflicts:
+Libs: -L${libdir} -lcbase
+Libs.private: -lexpat -lnsl -lrt -ldl -lcrypt  
+Cflags: -I${includedir}

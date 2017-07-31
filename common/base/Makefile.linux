@@ -1,0 +1,91 @@
+#####################################################################
+#
+#
+#####################################################################
+
+####################
+# Tools Define 
+####################
+
+SHELL  = /bin/sh
+CC     = gcc
+AR     = ar ruvs
+RANLIB = ranlib 
+LEX    = lex
+YACC   = yacc
+INGCC  = esqlc
+STRIP  = strip
+
+####################
+# Oracle Define 
+####################
+#include $(ORACLE_HOME)/precomp/lib/env_precomp.mk
+#PROCFLAGS = sqlcheck=full mode=oracle CHAR_MAP=string UNSAFE=NULL=yes DBMS=v8
+#ORAINC = $(ORACLE_HOME)/precomp/include
+
+
+#CMINC = $(CBS_HOME)/include
+#CMINC = $(HOME)/STD/include
+
+#PRINC = include=$(CMINC)
+#CPINC = -I$(CMINC)
+
+
+#LDFLAGS = -L$(ORACLE_HOME)/lib -lclntsh
+
+####################
+# Solaris
+####################
+#CFLAGS = -D_SOLARIS_  -Wall
+####################
+# Linux
+####################
+CFLAGS = -D_LINUX_ -Wall
+
+
+
+####################
+# Define suffix
+####################
+.SUFFIXES: .o .c .pc
+
+.pc.c:
+	$(PROC) $(PROCFLAGS) $(PRINC) iname=$*.pc
+
+
+.c.o:
+	$(CC) $(CFLAGS) $(CPINC) -c $*.c
+
+####################
+# ALL
+####################
+TARGET = ./libutil.a
+
+OBJS =	\
+	bas_date.o\
+	bas_process.o\
+	bas_tcpip_sock.o\
+	bas_log.o\
+	bas_util.o\
+	bas_base64.o\
+	bas_file.o\
+	bas_machin.o\
+	bas_string.o\
+	bas_timer.o
+
+all: $(TARGET)
+
+####################
+# LIST
+####################
+$(TARGET): $(OBJS)
+	if [ -f $(TARGET) ]; then /bin/rm $(TARGET); fi;
+	$(AR)  $(TARGET) $(OBJS)
+
+
+####################
+# CLEAN
+####################
+touch:
+	rm -f *.o a.out core;
+	touch *;

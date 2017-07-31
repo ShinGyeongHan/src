@@ -1,0 +1,3 @@
+echo lncd; cd lncd; make touch; cd ..;
+echo lncd_log; cd lncd_log; make touch; cd ..;
+echo nlogday; cd nlogday; make touch; cd ..;
